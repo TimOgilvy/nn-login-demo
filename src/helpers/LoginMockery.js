@@ -16,7 +16,7 @@ class LoginMockery {
 
     correctUsername = "Example User";
 
-    correctPassword = "L3tU$1nP13azE";
+    correctPassword = "ExamplePassword1";
 
     mockBackendDelay = 5000;
 
