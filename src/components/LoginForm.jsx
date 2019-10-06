@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
       .mockLogin(formData)
       .then(response => {
         console.log(response);
-        setAuthState(true);
+        setAuthState(true, response.username);
         this.setState({
           working: false
         });

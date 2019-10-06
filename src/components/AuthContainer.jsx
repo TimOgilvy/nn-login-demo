@@ -6,25 +6,29 @@ class AuthContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userAuthenticated: false
+      userAuthenticated: false,
+      userName: ''
     };
   }
 
-  setAuthState = newState =>
+  setAuthState = (newState, userName) =>
     this.setState({
-      userAuthenticated: newState
+      userAuthenticated: newState,
+      userName
     });
 
-  logUserOut = () => this.setAuthState(false);
+  logUserOut = () => this.setAuthState(false, '');
 
   render = () => {
-    const { userAuthenticated } = this.state;
+    const { userAuthenticated, userName } = this.state;
     return (
       <>
         {' '}
         {/* fragment shorthand */}
         {!userAuthenticated && <LoginForm setAuthState={this.setAuthState} />}
-        {userAuthenticated && <WelcomePage logUserOut={this.logUserOut} />}
+        {userAuthenticated && (
+          <WelcomePage logUserOut={this.logUserOut} userName={userName} />
+        )}
       </>
     );
   };

@@ -23,7 +23,9 @@ class LoginMockery {
     mockLogin(formData) {
         return new Promise((resolve, reject) => {
             if (formData.username === this.correctUsername && formData.password === this.correctPassword) {
-                setTimeout(resolve, this.mockBackendDelay);
+                setTimeout(() => resolve({
+                    username: formData.username
+                }), this.mockBackendDelay);
                 return true;
             }
             const inputMessages = {};
@@ -38,6 +40,7 @@ class LoginMockery {
                 message: 'Login details were incorrect',
                 input: inputMessages,
             }), this.mockBackendDelay);
+            return true;
         });
     }
 }
